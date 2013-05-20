@@ -1,11 +1,16 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" debug="true">
 <head profile="http://gmpg.org/xfn/11">
 <meta charset="UTF-8">
 <title>Blog</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name = "viewport" content = "width = device-width">
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/icon.css" />
+<script type="text/javascript" src="js/jTouch.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<!--<script type="text/javascript" src="http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js"></script>-->
 <style>
 html,body{width:100%;height:100%;margin:0;padding:0;}
 html{font-size:62.5%;}
@@ -15,34 +20,75 @@ div{padding:0;margin:0;text-align:center;}
 .clear{*zoom:1;}
 a{text-decoration:none;outline:none;}
 
-.shadow1{text-shadow:0px 2px 2px #000;}
-.shadow1:hover,.shadow1:active{text-shadow:0px 10px 2px #000;}
+/*icons absolute position*/
+.abs{position:absolute;left:10px;text-align:center;}
+.top20{top:20px;}
+.top120{top:120px;}
 
-.icon{font-size:4rem;color:#fff;}
-.icons{position:absolute;left:30px;text-align:center;}
-.icons a{visibility:hidden;}
-.top{top:20px;}
+/*icons style*/
+.icons a{display:none;}
+.icon{font-size:1.6rem;color:#fff;cursor:pointer;-webkit-transition:all 0.2s linear;display:block;}
 
-#wrap{width:100%;height:100%;}
+/*icons shadow*/
+.shadow{text-shadow:0px 1px 1px rgba(0,0,0,1);-webkit-transition:all 0.2s linear;}
+.shadow.hover{text-shadow:2px 0px 20px #fff,0px 2px 2px #000;}
+.shadow.hover .icon{color:#fff;}
 
-#nav{float:left;width:90px;height:100%;border-right:1px solid #303136;box-shadow:5px 0px 5px #303136;background:url(../images/bg.png) repeat;position:relative;}
+#wrap{width:100%;height:100%;overflow:hidden;}
 
-#content{margin-left:95px;height:100%;background:#efedec;}
-#contentLeft{width:30%;height:100%;float:left;border-right:1px solid #dcdad9;}
+#nav{float:left;width:40px;height:100%;border-right:1px solid #303136;box-shadow:0px 0px 2px #303136,-5px 0px 5px #333 inset;background:url(../images/bg.png) repeat;position:relative;}
+
+#content{margin-left:42px;height:100%;background:#efedec;}
+#contentLeft{width:35%;height:100%;float:left;border-right:1px solid #dcdad9;}
 #contentRight{height:100%;float:left;border-left:1px solid #fff;}
 
+/*three icons*/
+.threeIcon .icons{margin-bottom:30px;}
+.threeIcon .icon{color:#2E2E2E;}
+.threeIcon .cur .icon{color:#fff;}
 
-
-
+/*center icons*/
+.centerIcon{height:100px;top:50%;margin-top:-50px;left:8px;}
+.centerIcon .icons{margin-bottom:20px;}
+.centerIcon .icon{font-size:2.4rem;color:#ccc;}
 </style>
 </head>
 <body>
 	<div id="wrap">
 		<nav id="nav">
 		
-			<div class="top icons shadow1">
-				<span class="icon" data-icon="&#xe055;"></span>
+			<div class="abs top20 icons shadow">
+				<span class="icon" data-icon="&#x0055;"></span>
 				<a href="#">返回上一级</a>
+			</div>
+			
+			<div class="abs top120 threeIcon">
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#xe174;"></span>
+					<a href="#">返回上一级</a>
+				</div>
+				
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#xe10b;"></span>
+					<a href="#">返回上一级</a>
+				</div>
+				
+				<div class="icons shadow cur">
+					<span class="icon" data-icon="&#xe11c;"></span>
+					<a href="#">返回上一级</a>
+				</div>
+			</div>
+			
+			<div class="abs centerIcon">
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#xe042;"></span>
+					<a href="#">返回上一级</a>
+				</div>
+				
+				<div class="icons shadow cur">
+					<span class="icon" data-icon="&#xe044;"></span>
+					<a href="#">返回上一级</a>
+				</div>
 			</div>
 			
 		</nav>
@@ -62,6 +108,25 @@ a{text-decoration:none;outline:none;}
 		</div>
 	</div>
 	
-
+<script>
+var $id = function(id){
+	return document.getElementById(id) || id;
+}
+var nav = $id('nav');
+var NavTouch = new jTouch(nav);
+NavTouch.on('start',function(evt){
+	var target = evt.target.parentNode;
+	if(hasClass(target,'icons')){
+		addClass(target,'hover');
+	}
+}).on('end',function(evt){
+	var target = evt.target.parentNode;
+	if(hasClass(target,'icons')){
+		setTimeout(function(){
+			removeClass(target,'hover');
+		},500);
+	}
+});
+</script>
 </body>
 </html>
