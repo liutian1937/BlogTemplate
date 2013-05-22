@@ -23,12 +23,15 @@ a{text-decoration:none;outline:none;}
 /*icons absolute position*/
 .abs{position:absolute;left:10px;text-align:center;}
 .top20{top:20px;}
-.top120{top:120px;}
+.top90{top:90px;}
+.bottom90{bottom:90px;}
+.bottom0{bottom:0px;}
 
 /*icons style*/
+.icons{margin-bottom:30px;}
 .icons a{display:none;}
-.icon{font-size:1.6rem;color:#fff;cursor:pointer;-webkit-transition:all 0.2s linear;display:block;}
-
+.icon{font-size:1.6rem;color:#999;cursor:pointer;-webkit-transition:all 0.2s linear;display:block;}
+.cur .icon{color:#fff;}
 /*icons shadow*/
 .shadow{text-shadow:0px 1px 1px rgba(0,0,0,1);-webkit-transition:all 0.2s linear;}
 .shadow.hover{text-shadow:2px 0px 20px #fff,0px 2px 2px #000;}
@@ -42,15 +45,11 @@ a{text-decoration:none;outline:none;}
 #contentLeft{width:35%;height:100%;float:left;border-right:1px solid #dcdad9;}
 #contentRight{height:100%;float:left;border-left:1px solid #fff;}
 
-/*three icons*/
-.threeIcon .icons{margin-bottom:30px;}
-.threeIcon .icon{color:#2E2E2E;}
-.threeIcon .cur .icon{color:#fff;}
-
 /*center icons*/
 .centerIcon{height:100px;top:50%;margin-top:-50px;left:8px;}
 .centerIcon .icons{margin-bottom:20px;}
 .centerIcon .icon{font-size:2.4rem;color:#ccc;}
+
 </style>
 </head>
 <body>
@@ -62,10 +61,10 @@ a{text-decoration:none;outline:none;}
 				<a href="#">返回上一级</a>
 			</div>
 			
-			<div class="abs top120 threeIcon">
+			<div class="abs top90">
 				<div class="icons shadow">
 					<span class="icon" data-icon="&#xe174;"></span>
-					<a href="#">返回上一级</a>
+					<a href="#">加星的</a>
 				</div>
 				
 				<div class="icons shadow">
@@ -82,12 +81,32 @@ a{text-decoration:none;outline:none;}
 			<div class="abs centerIcon">
 				<div class="icons shadow">
 					<span class="icon" data-icon="&#xe042;"></span>
-					<a href="#">返回上一级</a>
+					<a href="#">上一页</a>
 				</div>
 				
 				<div class="icons shadow cur">
 					<span class="icon" data-icon="&#xe044;"></span>
-					<a href="#">返回上一级</a>
+					<a href="#">下一页</a>
+				</div>
+			</div>
+			
+			<div class="abs bottom90">
+				<div class="icons shadow cur">
+					<span class="icon" data-icon="&#xe13a;"></span>
+					<a href="#">按时间排序</a>
+				</div>
+				
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#xe135;"></span>
+					<a href="#">RSS订阅</a>
+				</div>
+			</div>
+			
+			<div class="abs bottom0">
+				
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#xe1df;"></span>
+					<a href="#">更新</a>
 				</div>
 			</div>
 			
