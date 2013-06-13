@@ -8,9 +8,10 @@
 
 
 <link rel="stylesheet" type="text/css" href="css/icon.css" />
+<script type="text/javascript" src="js/Common.js"></script>
 <script type="text/javascript" src="js/JTouch.js"></script>
 <script type="text/javascript" src="js/JScroll.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
+
 
 <style>
 html,body{width:100%;height:100%;margin:0;padding:0;}
@@ -32,7 +33,7 @@ a{text-decoration:none;outline:none;}
 /*icons style*/
 .icons{margin-bottom:30px;}
 .icons a{display:none;}
-.icon{font-size:1.6rem;color:#999;cursor:pointer;-webkit-transition:all 0.2s linear;display:block;}
+.icon{font-size:1.6rem;color:#999;cursor:pointer;-webkit-transition:all 0.2s linear;display:inline-block;text-align:center;}
 .cur .icon{color:#fff;}
 /*icons shadow*/
 .shadow{text-shadow:0px 1px 1px rgba(0,0,0,1);-webkit-transition:all 0.2s linear;}
@@ -78,8 +79,23 @@ a{text-decoration:none;outline:none;}
 
 /*content right start*/
 #contentRight{height:100%;margin-left:320px;position:relative;overflow:hidden;}
-#contentTop{height:55px;margin:0px 50px;border-bottom:1px solid #e1e1e1;}
+
+#contentTop{height:34px;padding:10px 0px;margin:0px 60px;border-bottom:1px solid #e1e1e1;line-height:34px;}
+#contentTop .rightIcon{float:right;}
+#contentTop .icon{float:left;font-size:2.0rem;margin-right:10px;}
+#contentTop .icon:hover{color:#666;}
+#contentTop .rightIcon .icon{margin-right:20px;}
+
+.drop_shadow{position:relative;margin:0px 60px;height:10px;overflow:hidden;}
+.drop_shadow:after {position: absolute;width: 90%;height: 10px;left: 5%;border-radius: 50%;bottom: 15px;content: "";box-shadow: 0 7px 16px rgba(0,0,0,0.4);}
+
+
 #contentWrap{margin:0px 80px;margin-top:20px;overflow:hidden;}
+
+
+/*blog content style*/
+#contentWrap img{padding:5px;border:1px solid #ccc;margin:0 auto;background:#fff;display:block;}
+
 </style>
 </head>
 <body>
@@ -92,20 +108,22 @@ a{text-decoration:none;outline:none;}
 			</div>
 			
 			<div class="abs top90">
-				<div class="icons shadow">
-					<span class="icon" data-icon="&#xe174;"></span>
-					<a href="#">加星的</a>
-				</div>
-				
-				<div class="icons shadow">
-					<span class="icon" data-icon="&#xe10b;"></span>
-					<a href="#">返回上一级</a>
-				</div>
-				
 				<div class="icons shadow cur">
 					<span class="icon" data-icon="&#xe11c;"></span>
-					<a href="#">返回上一级</a>
+					<a href="#">按分类分组</a>
 				</div>
+				
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#xe13a;"></span>
+					<a href="#">按时间分组</a>
+				</div>
+				
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#x003b;"></span>
+					<a href="#">按标签分组</a>
+				</div>
+				
+				
 			</div>
 			
 			<div class="abs centerIcon">
@@ -121,22 +139,24 @@ a{text-decoration:none;outline:none;}
 			</div>
 			
 			<div class="abs bottom90">
-				<div class="icons shadow cur">
-					<span class="icon" data-icon="&#xe13a;"></span>
-					<a href="#">按时间排序</a>
+				
+				
+				<div class="icons shadow">
+					<span class="icon" data-icon="&#xe02b;"></span>
+					<a href="#">按好评排序</a>
 				</div>
 				
 				<div class="icons shadow">
-					<span class="icon" data-icon="&#xe135;"></span>
-					<a href="#">RSS订阅</a>
+					<span class="icon" data-icon="&#x005a;"></span>
+					<a href="#">按评论排序</a>
 				</div>
 			</div>
 			
 			<div class="abs bottom0">
 				
 				<div class="icons shadow">
-					<span class="icon" data-icon="&#xe1df;"></span>
-					<a href="#">更新</a>
+					<span class="icon" data-icon="&#xe135;"></span>
+					<a href="#">RSS订阅</a>
 				</div>
 			</div>
 			
@@ -268,14 +288,36 @@ a{text-decoration:none;outline:none;}
 			<div id="contentRight">
 				
 				<!--content top start-->
-				<div id="contentTop">
-					<span class="icon" data-icon="&#xe15b;"></span>
+				<div id="contentTop" class="box">
+					
+					<a href="javascript:;">
+						<span class="icon" data-icon="&#xe12d;"></span>
+					</a>
+					<a href="javascript:;">
+						<span class="icon" data-icon="&#xe12c;"></span>
+					</a>
+					
+					<div class="rightIcon clear">
+						<a href="javascript:;">
+							<span class="icon" data-icon="&#xe02b;"></span>
+						</a>
+						<a href="javascript:;">
+							<span class="icon" data-icon="&#x005a;"></span>
+						</a>
+						<a href="javascript:;">
+							<span class="icon" data-icon="&#xe15b;"></span>
+						</a>
+					</div>
+					
 				</div>
+				
+				<div class="drop_shadow"></div>
+				
 				<!--content top end-->
 				
 					<div id="contentWrap">
 					
-						<div class="wp-caption aligncenter" id="attachment_1224" style="width: 460px;">
+						<div class="wp-caption aligncenter" id="attachment_1224" >
 						<p><img class="size-full wp-image-1224" title="boat-anchor-text-links" alt="Javascript触屏手势库-jTouch" src="http://liutian1937.github.io/JTouch/images/jtouch.jpg" width="450" height="450"></p>
 						<p class="wp-caption-text">Javascript触屏手势库-jTouch</p>
 						</div>
@@ -328,61 +370,32 @@ a{text-decoration:none;outline:none;}
 
 	
 <script>
-var Public = {
-	getId : function (id) {
-		return document.getElementById(id) || id;
-	},
-	addClass : function (element,value){
-		if(!element.className){
-			element.className = value;
-		}else{
-			var oValue = element.className;
-			oValue += " ";
-			oValue += value;
-			element.className = oValue;
-		}
-	},
-	removeClass : function (element, className){
-		var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-		if (element.className.match(reg)){
-			var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-			element.className = element.className.replace(reg, ' ');
-		}
-	},
-	removeAllClass : function (name) {
-		var i = 0, len, list = Public.getId('itemWrap').getElementsByTagName('li');
-		len = list.length;
-		for (i; i<len; i += 1) {
-			Public.removeClass(list[i],name);
-		};
-	}
-}
 
 //左侧导航部分
-JTouch(Public.getId('nav')).on('start',function(evt){
+JTouch(Common.getId('nav')).on('start',function(evt){
 	var target = evt.target.parentNode;
-	if(hasClass(target,'icons')){
-		addClass(target,'hover');
+	if(Common.hasClass(target,'icons')){
+		Common.addClass(target,'hover');
 	}
 }).on('end',function(evt){
 	var target = evt.target.parentNode;
-	if(hasClass(target,'icons')){
+	if(Common.hasClass(target,'icons')){
 		setTimeout(function(){
-			removeClass(target,'hover');
+			Common.removeClass(target,'hover');
 		},500);
 	}
 });
 
 //中间标题列表
 JScroll({
-	'wrap' : Public.getId('itemWrap'),
+	'wrap' : Common.getId('itemWrap'),
 	'callback' : function (id,target){
-		Public.removeAllClass('cur');
+		Common.removeAllClass('cur');
 		target.className = 'cur';
 	}
 });
 
-var cw = Public.getId('contentWrap');
+var cw = Common.getId('contentWrap');
 var pageY = function(elem){
 			//获取距离顶部的距离
 			return elem.offsetParent?(elem.offsetTop+pageY(elem.offsetParent)):elem.offsetTop;
