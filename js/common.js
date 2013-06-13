@@ -28,10 +28,12 @@ var Common = {
 		if(!element.className){
 			element.className = value;
 		}else{
-			var oValue = element.className;
-			oValue += " ";
-			oValue += value;
-			element.className = oValue;
+			if (!Common.hasClass(element,value)){
+				var oValue = element.className;
+				oValue += " ";
+				oValue += value;
+				element.className = oValue;
+			};
 		}
 	},
 	isWebkit : function(){

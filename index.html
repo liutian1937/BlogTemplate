@@ -17,11 +17,11 @@
 html,body{width:100%;height:100%;margin:0;padding:0;color:#333;}
 html{font-size:62.5%;}
 body{background:#303136;overflow:hidden;font-size:12px;font-size:1.2rem;}
-div,p,h1,h2,h3{padding:0;margin:0;font-size:62.5%;}
+div,p,h1,h2,h3{padding:0;margin:0;font-weight:normal;}
 .clear:after{content:"";display:block;height:0;clear:both;visibility: hidden;overflow:hidden;}
 .clear{*zoom:1;}
 .yahei{font-family:"Microsoft YaHei","微软雅黑" !important;}
-a{text-decoration:none;outline:none;}
+a{text-decoration:none;outline:none;color:#333;}
 
 /*icons absolute position*/
 .abs{position:absolute;left:10px;text-align:center;}
@@ -53,7 +53,7 @@ a{text-decoration:none;outline:none;}
 
 
 /*content left start*/
-#contentLeft{width:320px;height:100%;float:left;border-right:1px solid #dcdad9;box-shadow:1px 0px 1px #fff;}
+#contentLeft{width:320px;height:100%;float:left;border-right:1px solid #dcdad9;box-shadow:1px 0px 1px #fff;overflow:hidden;}
 
 #itemWrap{height:100%;padding:0px 15px;overflow:hidden;}
 	
@@ -86,18 +86,46 @@ a{text-decoration:none;outline:none;}
 #contentTop .icon:hover{color:#666;}
 #contentTop .rightIcon .icon{margin-right:20px;}
 
-.drop_shadow{position:relative;margin:0px 60px;height:5px;overflow:hidden;z-index:10;}
-.drop_shadow:after {position: absolute;width: 90%;height:100px;left: 5%;border-radius:30%;bottom: 15px;content: "";box-shadow: 0 6px 17px rgba(0,0,0,1);}
+.dropShadow{position:relative;margin:0px;height:5px;overflow:hidden;z-index:10;}
+.dropShadow:after {position: absolute;width: 100%;height:100px;border-radius:25%;bottom: 16px;content: "";box-shadow: 0 6px 17px rgba(0,0,0,0.7);}
 
 
 #contentWrap{margin:0px 110px;margin-top:-5px;overflow:hidden;}
 
 /*blog content style*/
-#postWrap {padding-top:20px;}
+#postWrap {margin-top:-100px;padding-top:120px;position:relative;}
+#postWrap .siblink{position:absolute;display:block;height:50px;color:#333;width:80%;left:0px;padding:25px 0px;}
+#postWrap .siblink .icon{font-size:3.2rem;float:left;line-height:46px;margin-right:20px;}
+#postWrap .siblink h3{line-height:26px;font-size:1.4rem;display:block;}
+#postWrap .siblink .category{font-size:1.2rem;color:#aaa;}
+#prevArticle{top:0px;}
+#nextArticle{bottom:0px;}
+.rotate .icon{transform:rotate(180deg);-o-transform:rotate(180deg);-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);}
+
 #postWrap .header{padding:10px 0px;border-bottom:1px solid #ddd;}
 #postWrap .header h1{font-size:2.8rem;line-height:40px;text-shadow:0px 0px 1px rgba(0,0,0,0.5);}
-#postWrap .header time{line-height:24px;}
-#postWrap img{padding:5px;border:1px solid #ccc;margin:0 auto;background:#fff;display:block;}
+#postWrap .header time{font-size:1.2rem;line-height:24px;}
+#postWrap .content{padding:20px 0px;font-size:1.4rem;line-height:30px;color:#666;}
+#postWrap .content p{margin:5px 0px;}
+#postWrap .content a{color:#db4f33;}
+#postWrap .content a:hover{border-bottom:1px solid #db4f33;}
+#postWrap .content h2,#postWrap .content h3{font-size:1.8rem;color:#333;font-weight:bold;}
+#postWrap img{padding:5px;border:1px solid #ccc;margin:0 auto;background:#fff;display:block;max-width:94%;}
+
+
+
+@media screen and (min-width:1280px){
+}
+ 
+@media screen and (min-width: 800px) and (max-width: 1280px) {
+	#contentLeft{width:280px;}
+	#contentRight{margin-left:280px;}
+	.dropShadow:after{bottom:20px;box-shadow: 0 6px 17px rgba(0,0,0,1);}
+	#contentWrap{margin:0px 60px;margin-top:-5px;}
+}
+ 
+@media screen and (max-width: 800px) {
+}
 
 </style>
 </head>
@@ -314,65 +342,70 @@ a{text-decoration:none;outline:none;}
 					
 				</div>
 				
-				<div class="drop_shadow"></div>
+				<div class="dropShadow"></div>
 				
 				<!--content top end-->
 				<!--content wrap start-->
 					<div id="contentWrap">
 						
 						<article id="postWrap">
-						
+							
+							<a href="#" class="siblink" id="prevArticle">
+								<span class="icon" data-icon="&#xe04b;"></span>
+								<h3>关于电影介绍的意思有哪些呢？</h3>
+								<span class="category">分类目录是</span>
+							</a>
+							
 							<header class="header">
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<h1 class="yahei">电影《乔布斯》8月16日在美上映</h1>
 							</header>
+							<section class="content">
 							
+								<p><img class="size-full wp-image-1224" title="boat-anchor-text-links" alt="Javascript触屏手势库-jTouch" src="http://liutian1937.github.io/JTouch/images/jtouch.jpg" width="450" height="450"></p>
+								<p>触屏手势库--JTouch</p>
+								<p>封装的代码有不足支出，以及bug等欢迎大家多多指正。</p>
+								<p>Github地址：<a href="https://github.com/liutian1937/JTouch" target="_blank">https://github.com/liutian1937/JTouch</a>&nbsp;（大家可以fork项目跟踪最新进展）</p>
+								<h2>JTouch的介绍</h2>
+								<p>JTouch是针对触屏浏览器提供的一个手势集合，由于我的测试环境主要是ipad，所以对于其他触屏设备的支持情况可能会有所不足。这个在后期版本升级过程中会修复。</p>
+								<p>JTouch在手指移动上去会触发<strong>start</strong>事件，结束会触发<strong>end</strong>事件。主要支持的手势有tap(单击)，doubletap(双击)，longtap（长按），hold（拖拽），swipe（滑动），flick（轻拂），pinch（捏合，拉伸），rotate（旋转）；除了pinch，rotate手势外，其他手势事件的回调函数都会返回<span style="color: #db4f33;"><strong>data['fingerNum']</strong><span style="color: #000000;">值，所以在回调函数中可以根据手指的数量来拼合其他的事件。</span></span></p>
+								<p>其中每个手势事件都会返回响应的回调函数，接受回调函数的参数值一般定义为evt和data，可自行设定。</p>
+								<ul>
+								<li>其中swipe和flip可以返回方向data['direction']以及左右，上下移动的距离data['x']，data['y']，swipe事件结束会返回状态值data['status'] == &nbsp;end；</li>
+								<li>pinch会返回type信息，即in和out，来判断向里还是向外压缩或者拉伸;返回data['scale']表示缩放比例；</li>
+								<li>rotate同样会有direction信息来简单判断向左旋转亦或向右旋转，同时返回data['rotation']作为角度信息；</li>
+								<li>每个手势事件都有相应的event对象返回，其中pinch和rotate返回的与其他的event对象是不同的，这两个返回的是gesturechange的事件对象，（详细信息可以在debug模式下调试查看）</li>
+								</ul>
+								<h2>jTouch的使用</h2>
+								<ol>
+								<li>实例化<br>
+								var objTouch = document.getElementById('touch');<br>
+								var Touches = JTouch(objTouch);</li>
+								<li>采用链式写法，<br>
+								<blockquote><p>Touches.on('手势名称',function(evt,data){<br>
+								//回调函数部分<br>
+								})</p>
+								</blockquote>
+								</li>
+								<li>回调函数中返回相应的值</li>
+								</ol>
+								<h2>JTouch的示例</h2>
+								<p><a href="http://liutian1937.github.io/JTouch/carousel.html" target="_blank">http://liutian1937.github.io/JTouch/carousel.html</a></p>
+								<p>触摸平滑移动，其中用到了单独封装的translate插件，时间有限代码略显粗糙，各位看官见谅。</p>
+								<p><a href="http://liutian1937.github.io/JTouch/touch.html" target="_blank">http://liutian1937.github.io/JTouch/touch.html</a></p>
+								<p>稍微仿了下ipad的界面效果，有太多不足支持。长按可以触发icon抖动，双击空白取消效果，但是取消效果过程会产生抖动，希望哪位高人提点意见。其中想到了用-webkit-animation-play-state:paused;来实现，但是具体如何让动画停在第一帧不甚了解。</p>
+								<p>另外做了个简单的图像效果，这个效果的flick效果还没有强化，关于这个效果我感觉我实现的复杂了一些，但是暂时没有想到万全之策，所以里面出现了不少的参数，哪位高人见到可以优化之。大家可以根据这个效果扩展成一个相册效果。具有左右翻的效果。</p>
 
-							<div class="wp-caption aligncenter" id="attachment_1224" >
-							<p><img class="size-full wp-image-1224" title="boat-anchor-text-links" alt="Javascript触屏手势库-jTouch" src="http://liutian1937.github.io/JTouch/images/jtouch.jpg" width="450" height="450"></p>
-							<p class="wp-caption-text">Javascript触屏手势库-jTouch</p>
-							</div>
-							<p>触屏手势库--JTouch</p>
-							<p>封装的代码有不足支出，以及bug等欢迎大家多多指正。</p>
-							<p>Github地址：<a href="https://github.com/liutian1937/JTouch" target="_blank">https://github.com/liutian1937/JTouch</a>&nbsp;（大家可以fork项目跟踪最新进展）</p>
-							<h2>JTouch的介绍</h2>
-							<p>JTouch是针对触屏浏览器提供的一个手势集合，由于我的测试环境主要是ipad，所以对于其他触屏设备的支持情况可能会有所不足。这个在后期版本升级过程中会修复。</p>
-							<p>JTouch在手指移动上去会触发<strong>start</strong>事件，结束会触发<strong>end</strong>事件。主要支持的手势有tap(单击)，doubletap(双击)，longtap（长按），hold（拖拽），swipe（滑动），flick（轻拂），pinch（捏合，拉伸），rotate（旋转）；除了pinch，rotate手势外，其他手势事件的回调函数都会返回<span style="color: #db4f33;"><strong>data['fingerNum']</strong><span style="color: #000000;">值，所以在回调函数中可以根据手指的数量来拼合其他的事件。</span></span></p>
-							<p>其中每个手势事件都会返回响应的回调函数，接受回调函数的参数值一般定义为evt和data，可自行设定。</p>
-							<ul>
-							<li>其中swipe和flip可以返回方向data['direction']以及左右，上下移动的距离data['x']，data['y']，swipe事件结束会返回状态值data['status'] == &nbsp;end；</li>
-							<li>pinch会返回type信息，即in和out，来判断向里还是向外压缩或者拉伸;返回data['scale']表示缩放比例；</li>
-							<li>rotate同样会有direction信息来简单判断向左旋转亦或向右旋转，同时返回data['rotation']作为角度信息；</li>
-							<li>每个手势事件都有相应的event对象返回，其中pinch和rotate返回的与其他的event对象是不同的，这两个返回的是gesturechange的事件对象，（详细信息可以在debug模式下调试查看）</li>
-							</ul>
-							<h2>jTouch的使用</h2>
-							<ol>
-							<li>实例化<br>
-							var objTouch = document.getElementById('touch');<br>
-							var Touches = JTouch(objTouch);</li>
-							<li>采用链式写法，<br>
-							<blockquote><p>Touches.on('手势名称',function(evt,data){<br>
-							//回调函数部分<br>
-							})</p>
-							</blockquote>
-							</li>
-							<li>回调函数中返回相应的值</li>
-							</ol>
-							<h2>JTouch的示例</h2>
-							<p><a href="http://liutian1937.github.io/JTouch/carousel.html" target="_blank">http://liutian1937.github.io/JTouch/carousel.html</a></p>
-							<p>触摸平滑移动，其中用到了单独封装的translate插件，时间有限代码略显粗糙，各位看官见谅。</p>
-							<p><a href="http://liutian1937.github.io/JTouch/touch.html" target="_blank">http://liutian1937.github.io/JTouch/touch.html</a></p>
-							<p>稍微仿了下ipad的界面效果，有太多不足支持。长按可以触发icon抖动，双击空白取消效果，但是取消效果过程会产生抖动，希望哪位高人提点意见。其中想到了用-webkit-animation-play-state:paused;来实现，但是具体如何让动画停在第一帧不甚了解。</p>
-							<p>另外做了个简单的图像效果，这个效果的flick效果还没有强化，关于这个效果我感觉我实现的复杂了一些，但是暂时没有想到万全之策，所以里面出现了不少的参数，哪位高人见到可以优化之。大家可以根据这个效果扩展成一个相册效果。具有左右翻的效果。</p>
-							<hr>
-							<p><strong>更新记录：</strong></p>
-							<p><span style="color: #339966;">v1.1更新记录：</span></p>
-							<pre>命名jTouch -&gt; JTouch
-							实例化不需要new，直接JTouch
-							加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作，可以用mousewheel模拟pinch
-							加入init(),destory()功能来实现重置和销毁
-							<span style="color: #ff6600;">不足：手头没有win8的平板，暂时没有实现ie10的触控手势</span></pre>
-						
+
+							</section>
+							<footer class="footer">
+								
+							</footer>
+							<a href="#" class="siblink" id="nextArticle">
+								<span class="icon" data-icon="&#xe047;"></span>
+								<h3>具体都有神马老子说了算？</h3>
+								<span class="category">哥的米修斯</span>
+							</a>
 						</article>
 						
 					</div>
@@ -404,6 +437,7 @@ var JN = JNav(Common.getId('itemWrap'));
 //中间标题列表
 JScroll({
 	'wrap' : Common.getId('itemWrap'),
+	'horizontal' : true,
 	'initFn' : function (obj) {
 		JN.init();
 		JN.scroll(-obj.disTop);
@@ -420,17 +454,26 @@ JScroll({
 	}
 });
 
-var cw = Common.getId('postWrap');
-var pageY = function(elem){
-			//获取距离顶部的距离
-			return elem.offsetParent?(elem.offsetTop+pageY(elem.offsetParent)):elem.offsetTop;
-		}
-var dheight = Math.max(document.body.offsetHeight,document.body.clientHeight);
-var sheight = dheight - pageY(cw);
-cw.style.height = sheight + 'px';
 
 JScroll({
-	'wrap' : Common.getId('postWrap')
+	'wrap' : Common.getId('postWrap'),
+	'minusHeight' : 25,
+	'moveLimit' : 100,
+	'horizontal' : false,
+	'prevFn' : function (end){
+		if(end){
+			Common.removeClass(Common.getId('prevArticle'),'rotate');
+		}else{
+			Common.addClass(Common.getId('prevArticle'),'rotate');
+		}
+	},
+	'nextFn' : function (end){
+		if(end){
+			Common.removeClass(Common.getId('nextArticle'),'rotate');
+		}else{
+			Common.addClass(Common.getId('nextArticle'),'rotate');
+		}
+	}
 });
 
 

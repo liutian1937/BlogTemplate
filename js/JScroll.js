@@ -6,6 +6,8 @@
 		};
 		_this.params = params || {};
 		_this.wrap = _this.params.wrap || document.getElementById('wrap');
+		_this.minusHeight = _this.params.minusHeight || 0; //自定义减去的高度
+		_this.moveLimit = _this.params.moveLimit || 200; // 自定义滚动的时候限制高度
 		_this.touch = JTouch(_this.wrap);
 		_this.eachHeight = 200;//鼠标滚轮一次的长度
 		_this.init();
@@ -28,7 +30,7 @@
 				bodyHeight （窗口高度） - wrapHeight (外围容器高度)  = limitHeight (底部临界值)
 			*/
 			_this.bodyHeight = Math.max(document.body.offsetHeight,document.body.clientHeight);
-			_this.wrapHeight = _this.wrap.scrollHeight;
+			_this.wrapHeight = _this.wrap.scrollHeight - _this.minusHeight;
 			_this.limitHeight =  _this.bodyHeight-_this.wrapHeight;//限制的滚动距离
 			
 			_this.wrap.style.height = _this.wrap.scrollHeight +'px';
@@ -64,7 +66,7 @@
 					if(data['status'] == 'end'){
 						_this.end();
 					};
-				}else{
+				}else if(_this.params.horizontal){
 					var target = evt.target || evt.srcElement;
 					target = Common.getParent(target,'li');
 					
@@ -135,6 +137,27 @@
 		},
 		move : function (dis) {
 			var _this = this, result = _this.resultTop + dis;
+			if(result >= _this.moveLimit){
+				result = _this.moveLimit;
+			}else if(result <= _this.limitHeight - _this.moveLimit){
+				result = _this.limitHeight - _this.moveLimit;
+			};
+			
+			if(_this.params.prevFn){
+				if(result >= 80){
+					_this.params.prevFn();
+				}else{
+					_this.params.prevFn('end');
+				}
+			};
+			if(_this.params.nextFn){
+				if(result <= _this.limitHeight - 80){
+					_this.params.nextFn();
+				}else{
+					_this.params.nextFn('end');
+				};
+			};
+			
 			_this.translate(result); //开始移动
 			_this.disTop = result;
 			_this._moveFn(); //滚动的时候，回调使用
@@ -146,11 +169,11 @@
 				return false;
 			};
 			result = _this.resultTop + dis;
-			if(result >= 200){
-				result = 200;
+			if(result >= _this.moveLimit){
+				result = _this.moveLimit;
 				dis = result - _this.resultTop;
-			}else if(result <= _this.limitHeight - 200){
-				result = _this.limitHeight - 200;
+			}else if(result <= _this.limitHeight - _this.moveLimit){
+				result = _this.limitHeight - _this.moveLimit;
 				dis = result - _this.resultTop;
 			};
 			
