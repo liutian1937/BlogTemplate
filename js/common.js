@@ -13,15 +13,15 @@ var Common = {
 	},
 	removeClass : function (element,value) {
 		if (Common.hasClass(element,value)){
-			var reg = new RegExp('(\\s*)' + className + '(\\s*)');
+			var reg = new RegExp('(\\s*)' + value + '(\\s*)');
 			element.className = element.className.replace(reg, ' ');
 		}
 	},
 	removeAllClass : function (name) {
-		var i = 0, len, list = Public.getId('itemWrap').getElementsByTagName('li');
+		var i = 0, len, list = Common.getId('itemWrap').getElementsByTagName('li');
 		len = list.length;
 		for (i; i<len; i += 1) {
-			Public.removeClass(list[i],name);
+			Common.removeClass(list[i],name);
 		};
 	},
 	addClass : function (element,value) {

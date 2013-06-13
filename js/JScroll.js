@@ -6,7 +6,6 @@
 		};
 		_this.params = params || {};
 		_this.wrap = _this.params.wrap || document.getElementById('wrap');
-		_this.callback = _this.params.callback || function(){};
 		_this.touch = JTouch(_this.wrap);
 		_this.eachHeight = 200;//鼠标滚轮一次的长度
 		_this.init();
@@ -34,14 +33,9 @@
 			
 			_this.wrap.style.height = _this.wrap.scrollHeight +'px';
 			
-			
-			/* 
-			这里需要预留接口**************************
-			
-			_this.nav = new Nav(_this.wrap);//实例化导航变化
-			
-			_this.nav.scroll(-_this.disTop);
-			*/
+			if(_this.params.initFn){
+				_this.params.initFn(_this); //返回该实例化对象
+			}
 			
 			/*
 				Touch事件的处理
@@ -55,13 +49,13 @@
 				};
 			}).on('tap',function(evt,data){
 				var target, ret;
-				if(_this.tapActive){
+				if(_this.tapActive && _this.params.tapFn){
 					target = evt.target || evt.srcElement;
 					target = Common.getParent(target,'li');
 					
 					if(target && target.className != 'cateName'){
 						ret = target.getElementsByTagName('a')[0].getAttribute('href');
-						_this.callback(ret,target);
+						_this.params.tapFn(ret,target);
 					};
 				}
 			}).on('swipe',function(evt,data){
@@ -97,7 +91,6 @@
 				if(!_this._limit()){
 					_this.resultTop = _this.disTop;
 				};
-				
 				if(data['direction'] === 'up'){
 					if (_this.resultTop === 0){
 						return false;
@@ -144,7 +137,7 @@
 			var _this = this, result = _this.resultTop + dis;
 			_this.translate(result); //开始移动
 			_this.disTop = result;
-			//_this.nav.scroll(-_this.disTop);//改变菜单的标题显示 这里需要预留接口**************************
+			_this._moveFn(); //滚动的时候，回调使用
 		},
 		run : function (dis,time) {
 			var _this, result, t, b, c, d;
@@ -172,7 +165,7 @@
 				if(t<d){
 					t++;
 					_this.timer = setTimeout(Run,5);
-					//_this.nav.scroll(-_this.disTop);//改变菜单的标题显示 这里需要预留接口**************************
+					_this._moveFn(); //滚动的时候，回调使用
 				}else{
 					_this.isAnimate = false;
 					_this.disTop = result;
@@ -217,7 +210,21 @@
 			}else{
 				_this.resultTop = _this.disTop;
 			}
-			//_this.nav.scroll(-_this.resultTop); 这里需要预留接口**************************
+			_this._endFn(); //结束的时候回调使用
+		},
+		_moveFn : function () {
+			var _this = this;
+			if(_this.params.moveFn){
+				//移动过程中有回调函数
+				_this.params.moveFn(_this);
+			};
+		},
+		_endFn : function () {
+			var _this = this;
+			if(_this.params.endFn){
+				//移动过程中有回调函数
+				_this.params.endFn(_this);
+			};
 		},
 		_limit : function () {
 			var _this = this;
@@ -235,8 +242,5 @@
 			return c*t/d + b;
 		}
 	};
-	
-	
-	
 	window.JScroll = JScroll;
 })();

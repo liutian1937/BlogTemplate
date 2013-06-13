@@ -1,19 +1,24 @@
 ﻿/*
-	Name: Javascript Common Function
+	Name: Javascript JNav 
 	Link: niumowang.org
 	Author: ok8008@yeah.net
 */
 (function(){
 	var Nav = function (obj) {
 		var _this = this;
-		_this.items = obj.getElementsByTagName('ul');//获取子元素ul的数组
-		_this.wrapHeight = obj.scrollHeight;
+		if(!(_this instanceof JNav)) {
+			return new JNav(obj);
+		};
+		_this.obj = obj || {};
 		_this.titleHeight = 50;
 		_this.init();
 	}
 	Nav.prototype = {
 		init:function(){
 			var _this = this,i = 0, x, y, width, fixed;
+			_this.wrapHeight = _this.obj.scrollHeight; //获取wrap的实际高度
+			_this.items = _this.obj.getElementsByTagName('ul');//获取子元素ul的数组
+			
 			_this.current = 0;//当前滚动到第几个
 			_this.length = _this.items.length;//数组长度
 			_this.topLimit = []; //建立limit数组
@@ -55,10 +60,7 @@
 				fixed.appendChild(_this.cloneObj[i]);
 			};
 			
-			_this.cloneObj[0].style.display = 'block';
-			
-			console.log(_this.topLimit);//打印limit数组
-			
+			_this.cloneObj[0].style.display = 'block';			
 		},
 		scroll:function(disTop){
 			//处理滚动条的方法
