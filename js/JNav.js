@@ -37,7 +37,7 @@
 			};
 			width = _this.items[0].offsetWidth;
 			x = _this._pageX(_this.items[_this.length-1].getElementsByTagName('li')[0]);
-			Common.css(fixed,{
+			_this._css(fixed,{
 					'position' : 'fixed',
 					'top' : '0px',
 					'left': x+'px',
@@ -79,7 +79,7 @@
 			
 			for(i;i<_this.length;i++){
 				if(i > _this.current){
-					Common.css(_this.navObj[i],{
+					_this._css(_this.navObj[i],{
 						'display' : 'block',
 						'top' : '0px',
 						'bottom' : 'auto'
@@ -100,12 +100,12 @@
 			state = (state === 'show')?'block':'none';
 				
 			(position === 'top')?
-				Common.css(obj,{
+				_this._css(obj,{
 						'display' : state,
 						'top' : '0px',
 						'bottom' : 'auto'
 				}):
-				Common.css(obj,{
+				_this._css(obj,{
 						'display' : state,
 						'top' : 'auto',
 						'bottom' : '0px'
@@ -125,6 +125,11 @@
 			newArray.push(dis);
 			newArray.sort(function(a,b){return a-b});
 			return newArray.indexOf(dis)-1;
+		},
+		_css : function(obj,val){
+			for(var attr in val){
+				obj.style[attr] = val[attr];
+			}
 		},
 		_pageX:function(elem){
 			//获取距离左侧的距离

@@ -1,0 +1,23 @@
+<header class="header">
+	<time>fdskfjdksljf</time>
+	<h1>关于释放速度加快费多少空间</h1>
+</header>
+<section class="content">
+					<p><a href="http://www.reuters.com/article/2013/06/13/apple-iphone-idUSL3N0EP1BA20130613" target="_blank">路透社</a>报道，根据其相关消息源，苹果公司将于今年推出彩色廉价 iPhone，目前 iPhone 5S 和彩色 iPhone 都已开始试生产，并将于八月大规模生产，九月上架销售。苹果原本预期六月开始大规模生产彩色 iPhone，但由于苹果对产品设计、生产的极高标准，解决上色问题所耗时间超过预期，苹果不得不将彩色 iPhone 的生产面世时间推后两月。</p><p>下图是荷兰设计师 Martin Hajek 所作彩色 iPhone 概念图。</p><p><img src="http://img0.tech2ipo.com/upload/img/article/2013/06/1371104575361.jpg" style="float:none;" title="64b590a1jw1e5eblru0cpj20fa0a7dge.jpg" border="0" hspace="0" vspace="0"><br></p><p>另外，苹果目前已经制作出 4.7 英寸屏幕和 5.7 英寸屏幕的原型机。由于苹果的产品参数在最终定产之前常常变动，所以虽然苹果的亚洲供应链已经拿到这两款大屏手机的计划书，我们却仍然不能确定最终苹果是否会选择生产这两款大屏手机。</p><p>苹果内部还在讨论明年发布 99 美元手机的可行性。苹果此举意在中国、印度手机市场。</p><p><img src="http://img0.tech2ipo.com/upload/img/article/2013/06/1371104655339.jpg" style="float:none;" title="Bar Chart 6.10.2013.jpg" border="0" hspace="0" vspace="0"></p>		
+					<!--article tag-->
+					<div class="articleTag">
+						<div class="articleShare clear">
+							<a href="javascript:shareClick(60198,0)" class="sina"></a>
+							<a href="javascript:shareClick(60198,1)" class="qq"></a>
+							<a href="javascript:shareClick(60198,2)" class="renren"></a>
+							<a href="javascript:shareClick(60198,3)" class="qzone"></a>
+						</div>
+						<p>
+															<span>标签:</span>
+																																			<a href="/tag/94">苹果</a>
+																																				<a href="/tag/351">iPhone</a>
+																														</p>
+					</div>
+					<!--article tag end-->
+				</section>
+			

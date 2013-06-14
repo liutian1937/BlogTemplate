@@ -1,4 +1,51 @@
 (function(){
+	var utils = (function () {
+		var me = {};
+
+		var _elementStyle = document.createElement('div').style;
+		var _vendor = (function () {
+			var vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'],
+				transform,
+				i = 0,
+				l = vendors.length;
+
+			for ( ; i < l; i++ ) {
+				transform = vendors[i] + 'ransform';
+				if ( transform in _elementStyle ) return vendors[i].substr(0, vendors[i].length-1);
+			}
+
+			return false;
+		})();
+
+		function _prefixStyle (style) {
+			if ( _vendor === false ) return false;
+			if ( _vendor === '' ) return style;
+			return _vendor + style.charAt(0).toUpperCase() + style.substr(1);
+		}
+
+		me.getTime = Date.now || function getTime () { return new Date().getTime(); };
+
+		me.extend = function (target, obj) {
+			for ( var i in obj ) {
+				target[i] = obj[i];
+			}
+		};
+		var _transform = _prefixStyle('transform');
+		me.extend(me, {
+			hasTransform: _transform !== false,
+			hasPerspective: _prefixStyle('perspective') in _elementStyle,
+			hasTouch: 'ontouchstart' in window,
+			hasPointer: navigator.msPointerEnabled,
+			hasTransition: _prefixStyle('transition') in _elementStyle
+		});
+		me.extend(me.style = {}, {
+			transform: _transform,
+			transitionTimingFunction: _prefixStyle('transitionTimingFunction'),
+			transitionDuration: _prefixStyle('transitionDuration'),
+			transformOrigin: _prefixStyle('transformOrigin')
+		});
+		return me;
+	})();
 	var JScroll = function(params){
 		var _this = this;
 		if(!(_this instanceof JScroll)) {
@@ -6,35 +53,42 @@
 		};
 		_this.params = params || {};
 		_this.wrap = _this.params.wrap || document.getElementById('wrap');
+		_this.wrapStyle = _this.wrap.style;
 		_this.minusHeight = _this.params.minusHeight || 0; //自定义减去的高度
 		_this.moveLimit = _this.params.moveLimit || 200; // 自定义滚动的时候限制高度
 		_this.touch = JTouch(_this.wrap);
 		_this.eachHeight = 200;//鼠标滚轮一次的长度
 		_this.init();
-		window.onresize = function () {
-			_this.init();
+		if(window.addEventListener){
+			window.addEventListener('resize',function(){_this.init();},false);
+		}else if(window.attachEvent){
+			window.attachEvent('onresize',function(){_this.init();});
 		};
 	};
 	JScroll.prototype={
-		init : function () {
+		init : function (start) {
 			var _this = this;
 			
 			_this.isAnimate = false;//判断是否有动画
 			_this.tapActive = false; //单击事件是否激活
 			_this.handleHash = {}; //事件绑定的哈希表
 			_this.disTop = (_this.disTop &&  _this.disTop != 0)?_this.disTop:0; //滚动的距离，变化值
-			
+			if(start){
+				//是否重新开始,disTop为0
+				_this.disTop = 0;
+				_this.translate(0); 
+			};
 			_this.resultTop = 0;//开始或者结束的时候的距离，只在开始结束时改变
 			
 			/*
 				bodyHeight （窗口高度） - wrapHeight (外围容器高度)  = limitHeight (底部临界值)
 			*/
 			_this.bodyHeight = Math.max(document.body.offsetHeight,document.body.clientHeight);
-			_this.wrapHeight = _this.wrap.scrollHeight - _this.minusHeight;
-			_this.limitHeight =  _this.bodyHeight-_this.wrapHeight;//限制的滚动距离
+			_this.wrapHeight = _this.params.childHeight?_this.wrap.getElementsByTagName(_this.params.childHeight)[0].scrollHeight:_this.wrap.scrollHeight ;
+			_this.limitHeight =  _this.bodyHeight - _this.wrapHeight - _this.minusHeight;//限制的滚动距离
 			
-			_this.wrap.style.height = _this.wrap.scrollHeight +'px';
-			
+			_this.wrap.style.height = _this.wrapHeight +'px';
+			_this.end();
 			if(_this.params.initFn){
 				_this.params.initFn(_this); //返回该实例化对象
 			}
@@ -64,9 +118,20 @@
 				if(data['direction'] === 'up' || data['direction'] === 'down'){
 					_this.move(data['y']);
 					if(data['status'] == 'end'){
+						
+						if(_this.params.prevFn && _this.disTop >= 80){
+							//拖拽到顶部然后释放的事件
+							_this.params.prevFn('end');
+						};
+						if(_this.params.nextFn && _this.disTop <= _this.limitHeight - 80){
+							//拖拽到底部然后释放的事件
+							_this.params.nextFn('end');
+						};
+						
 						_this.end();
 					};
 				}else if(_this.params.horizontal){
+					//是否支持水平拖拽
 					var target = evt.target || evt.srcElement;
 					target = Common.getParent(target,'li');
 					
@@ -125,6 +190,7 @@
 				_this.end();
 				
 				if(_this.target){
+					//水平拖拽的释放
 					Common.css(_this.target,{
 					'WebkitTransform' : 'translate3d(0,0,0)',
 					'WebkitTransitionDuration' : '100ms',
@@ -144,17 +210,19 @@
 			};
 			
 			if(_this.params.prevFn){
+				//拖拽到顶部的事件
 				if(result >= 80){
-					_this.params.prevFn();
+					_this.params.prevFn('start');//箭头翻转
 				}else{
-					_this.params.prevFn('end');
+					_this.params.prevFn('back');//箭头翻转回来
 				}
 			};
 			if(_this.params.nextFn){
+				//拖拽到底部的事件
 				if(result <= _this.limitHeight - 80){
-					_this.params.nextFn();
+					_this.params.nextFn('start');//箭头翻转
 				}else{
-					_this.params.nextFn('end');
+					_this.params.nextFn('back');//箭头翻转回来
 				};
 			};
 			
@@ -220,6 +288,7 @@
 				_this.tapActive = false;
 				clearTimeout(_this.timer);
 				_this.isAnimate = false;
+				_this.disTop = _this._getComputedStyle()['y'];
 				_this.translate(_this.disTop);
 				_this.end();
 			};
@@ -263,6 +332,13 @@
 		},
 		_linear : function(t,b,c,d){
 			return c*t/d + b;
+		},
+		_getComputedStyle: function () {
+			var matrix = window.getComputedStyle(this.wrap, null), x, y;
+			matrix = matrix[utils.style.transform].split(')')[0].split(', ');
+			x = +(matrix[12] || matrix[4]);
+			y = +(matrix[13] || matrix[5]);
+			return { x: x, y: y };
 		}
 	};
 	window.JScroll = JScroll;
