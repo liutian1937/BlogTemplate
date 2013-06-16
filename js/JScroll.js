@@ -91,12 +91,17 @@
 			_this.end();
 			if(_this.params.initFn){
 				_this.params.initFn(_this); //返回该实例化对象
-			}
-			
+			};
+			if(_this.params.showBar){
+				//是否显示滚动条
+				_this._bar();
+			};
 			/*
 				Touch事件的处理
 			*/
-			
+			if(_this.params.stopEvent){
+				_this.touch.stopEvent();
+			}
 			_this.touch.on('start',function(){
 				_this.tapActive = true;
 				_this.stop();
@@ -280,7 +285,39 @@
 					'transitionDuration' : time+'ms',
 					'transitionTimingFunction':'linear'
 				});
-			}
+			};
+			
+			if(_this.params.showBar){
+				_this._barMove(dis,time)
+			};
+		},
+		_bar : function () {
+			var _this = this, height, backHeight = _this.bodyHeight - _this.minusHeight;
+			_this.percent = backHeight / _this.wrapHeight ;
+			height = _this.percent * backHeight;
+			if(!_this.Bar){
+				_this.Bar = document.createElement('div');
+				_this.Bar.className = 'bar';
+				_this.wrap.parentNode.appendChild(_this.Bar);
+			};
+			Common.css(_this.Bar,{
+				'height' : height + 'px'
+			});
+		},
+		_barMove : function (dis,time) {
+			var _this = this, barDis = - dis * _this.percent;
+			Common.css(_this.Bar,{
+				'opacity' : '1',
+				'WebkitTransform' : 'translate3d(0,'+barDis+'px,0)',
+				'WebkitTransitionDuration' : time+'ms',
+				'WebkitTransitionTimingFunction':'linear'
+			});
+			setTimeout(function(){
+				Common.css(_this.Bar,{
+					'opacity' : '0',
+					'WebkitTransitionDuration' : '700ms',
+				});
+			},time)
 		},
 		stop : function () {
 			var _this = this;

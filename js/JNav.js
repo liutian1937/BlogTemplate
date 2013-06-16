@@ -80,7 +80,7 @@
 			for(i;i<_this.length;i++){
 				if(i > _this.current){
 					_this._css(_this.navObj[i],{
-						'display' : 'block',
+						'opacity' : '1',
 						'top' : '0px',
 						'bottom' : 'auto'
 					});
@@ -97,16 +97,16 @@
 		_changeState : function (index,state,position) {
 			var _this = this, limit = _this.topLimit[index] - _this.topY[index] , obj = _this.navObj[index], i = 0;
 			(state === 'show')?_this._hideFixed(index):_this._hideFixed(index,true);//当需要显示固定的标题的时候，隐藏所以fixed
-			state = (state === 'show')?'block':'none';
+			state = (state === 'show')?1:0;
 				
 			(position === 'top')?
 				_this._css(obj,{
-						'display' : state,
+						'opacity' : state,
 						'top' : '0px',
 						'bottom' : 'auto'
 				}):
 				_this._css(obj,{
-						'display' : state,
+						'opacity' : state,
 						'top' : 'auto',
 						'bottom' : '0px'
 				});

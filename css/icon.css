@@ -14,6 +14,7 @@
 	font-family: 'IcoMoon';
 	content: attr(data-icon);
 	speak: none;
+	text-align:center;
 }
 
 /* Use the following CSS code if you want to have a class per icon */

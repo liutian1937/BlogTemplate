@@ -135,27 +135,27 @@ var Common = {
 	next : function () {
 		var obj = Common.siblings('next','cur');
 		var distance = Common.pageY(obj)+JLeft.disTop;
-		if(distance < 100 ){
+		if(distance < 120 ){
 			distance = -distance + JLeft.bodyHeight/2;
-			JLeft.run(distance,100);
+			JLeft.run(distance,120);
 		}else if(distance > JLeft.bodyHeight){
 			distance = -distance + JLeft.bodyHeight/2;
-			JLeft.run(distance,100);
+			JLeft.run(distance,120);
 		}else{
-			JLeft.run(-100,100);
+			JLeft.run(-120,120);
 		}
 	},
 	prev : function () {
 		var obj = Common.siblings('prev','cur');
 		var distance = Common.pageY(obj)+JLeft.disTop;
-		if(distance < 100 ){
+		if(distance < 120 ){
 			distance = -distance + JLeft.bodyHeight/2;
-			JLeft.run(distance,100);
+			JLeft.run(distance,120);
 		}else if(distance > JLeft.bodyHeight){
 			distance = -distance + JLeft.bodyHeight/2;
-			JLeft.run(distance,100);
+			JLeft.run(distance,120);
 		}else{
-			JLeft.run(100,100);
+			JLeft.run(120,120);
 		}
 	}
 };
