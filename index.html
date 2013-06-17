@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN" debug="true">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 <meta charset="UTF-8">
 <title>Blog</title>
@@ -501,20 +501,35 @@ var JRight = JScroll({
 	}
 });
 
-
+//异步载入数据
 function ajaxData(href){
 		Ajax.request(href,{
 				data : '',
 				success : function(xhr){
 					Common.getId('postWrap').getElementsByTagName('article')[0].innerHTML = xhr.responseText;
-					JRight.init(true); //重载样式，需要检测图片是否载入
+					asyncImg(Common.getId('postWrap'));
+					//JRight.init(true); //重载样式，需要检测图片是否载入
 				},
 				failure : function(xhr){
 					//to do with xhr
 				}
 			}
 		);
-		
+};
+function asyncImg(obj) {
+	var i = 0, ImgList = obj.getElementsByTagName('img'), Img = [], len = ImgList.length, LoadedNum = 0;
+	for(i; i < len; i += 1){
+		(function(j){
+			Img[j] = new Image();
+			Img[j].src = ImgList[j].getAttribute('src');
+			Img[j].onreadystatechange = function () {
+				if(Img[j].readyState=="complete"){
+					LoadedNum ++ ;
+					console.log(LoadedNum);
+				};
+			};
+		})(i);
+	};
 }
 
 </script>

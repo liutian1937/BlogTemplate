@@ -23,7 +23,6 @@
 			return _vendor + style.charAt(0).toUpperCase() + style.substr(1);
 		}
 
-		me.getTime = Date.now || function getTime () { return new Date().getTime(); };
 
 		me.extend = function (target, obj) {
 			for ( var i in obj ) {
@@ -46,6 +45,25 @@
 		});
 		return me;
 	})();
+	var SCommon = {
+		isWebkit : function(){
+			return (navigator.userAgent.toLowerCase().indexOf('webkit') > 0)?true:false;
+		},
+		css : function(obj,val){
+			for(var attr in val){
+				obj.style[attr] = val[attr];
+			}
+		},
+		getParent : function(target,tag){
+			if(target.tagName.toLowerCase() === tag){
+				return target;
+			}else if(target.getElementsByTagName(tag).length > 0){
+				return false;
+			}else {
+				return SCommon.getParent(target.parentNode,tag);
+			}
+		}
+	}
 	var JScroll = function(params){
 		var _this = this;
 		if(!(_this instanceof JScroll)) {
@@ -112,7 +130,7 @@
 				var target, ret;
 				if(_this.tapActive && _this.params.tapFn){
 					target = evt.target || evt.srcElement;
-					target = Common.getParent(target,'li');
+					target = SCommon.getParent(target,'li');
 					
 					if(target && target.className != 'cateName'){
 						ret = target.getElementsByTagName('a')[0].getAttribute('href');
@@ -138,21 +156,14 @@
 				}else if(_this.params.horizontal){
 					//是否支持水平拖拽
 					var target = evt.target || evt.srcElement;
-					target = Common.getParent(target,'li');
+					target = SCommon.getParent(target,'li');
 					
 					if(target && target.className != 'cateName'){
 						_this.target = target;
-						Common.css(target,{
-							'WebkitTransform' : 'translate3d('+data['x']+'px,0,0)',
-							'WebkitTransitionDuration' : '0ms',
-							'WebkitTransitionTimingFunction':'linear'
-						});
+						_this._transform(target,data['x'],0,0);
+						
 						if(data['status'] == 'end'){
-							Common.css(target,{
-							'WebkitTransform' : 'translate3d(0,0,0)',
-							'WebkitTransitionDuration' : '100ms',
-							'WebkitTransitionTimingFunction':'linear'
-							});
+							_this._transform(target,0,0,100);
 							_this.target = null;
 						};
 					};
@@ -196,11 +207,7 @@
 				
 				if(_this.target){
 					//水平拖拽的释放
-					Common.css(_this.target,{
-					'WebkitTransform' : 'translate3d(0,0,0)',
-					'WebkitTransitionDuration' : '100ms',
-					'WebkitTransitionTimingFunction':'linear'
-					});
+					_this._transform(_this.target,0,0,100);
 					_this.target = null;
 				}
 				
@@ -273,22 +280,10 @@
 		translate : function (dis,time) {
 			var _this = this, dis = parseInt(dis,10), time;
 			time = time?parseInt(time,10):0;
-			if(Common.isWebkit()){
-				Common.css(_this.wrap,{
-					'WebkitTransform' : 'translate3d(0,'+dis+'px,0)',
-					'WebkitTransitionDuration' : time+'ms',
-					'WebkitTransitionTimingFunction':'linear'
-				});
-			}else{
-				Common.css(_this.wrap,{
-					'transform' : 'translate(0,'+dis+'px)',
-					'transitionDuration' : time+'ms',
-					'transitionTimingFunction':'linear'
-				});
-			};
+			_this._transform(_this.wrap,0,dis,time);
 			
 			if(_this.params.showBar){
-				_this._barMove(dis,time)
+				_this._barMove(dis,time);
 			};
 		},
 		_bar : function () {
@@ -300,24 +295,16 @@
 				_this.Bar.className = 'bar';
 				_this.wrap.parentNode.appendChild(_this.Bar);
 			};
-			Common.css(_this.Bar,{
+			SCommon.css(_this.Bar,{
 				'height' : height + 'px'
 			});
 		},
 		_barMove : function (dis,time) {
 			var _this = this, barDis = - dis * _this.percent;
-			Common.css(_this.Bar,{
+			SCommon.css(_this.Bar,{
 				'opacity' : '1',
-				'WebkitTransform' : 'translate3d(0,'+barDis+'px,0)',
-				'WebkitTransitionDuration' : time+'ms',
-				'WebkitTransitionTimingFunction':'linear'
 			});
-			setTimeout(function(){
-				Common.css(_this.Bar,{
-					'opacity' : '0',
-					'WebkitTransitionDuration' : '700ms',
-				});
-			},time)
+			_this._transform(_this.Bar,0,barDis,time);
 		},
 		stop : function () {
 			var _this = this;
@@ -340,6 +327,16 @@
 				_this.resultTop = _this.disTop;
 			}
 			_this._endFn(); //结束的时候回调使用
+			
+			if(_this.Bar){
+				setTimeout(function(){
+					SCommon.css(_this.Bar,{
+						'opacity' : '0',
+						'transitionDuration' : '500ms',
+					});
+				},500)
+			};
+			
 		},
 		_moveFn : function () {
 			var _this = this;
@@ -353,6 +350,22 @@
 			if(_this.params.endFn){
 				//移动过程中有回调函数
 				_this.params.endFn(_this);
+			};
+		},
+		_transform : function (obj,x,y,time) {
+			var _this = this;
+			if(SCommon.isWebkit()){
+				SCommon.css(obj,{
+					'WebkitTransform' : 'translate3d('+x+'px,'+y+'px,0)',
+					'WebkitTransitionDuration' : time+'ms',
+					'WebkitTransitionTimingFunction':'linear'
+				});
+			}else{
+				SCommon.css(obj,{
+					'transform' : 'translate('+x+'px,'+y+'px)',
+					'transitionDuration' : time+'ms',
+					'transitionTimingFunction':'linear'
+				});
 			};
 		},
 		_limit : function () {
