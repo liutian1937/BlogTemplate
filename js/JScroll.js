@@ -160,10 +160,10 @@
 					
 					if(target && target.className != 'cateName'){
 						_this.target = target;
-						_this._transform(target,data['x'],0,0);
+						_this._transform(target.getElementsByTagName('div')[0],data['x'],0,0);
 						
 						if(data['status'] == 'end'){
-							_this._transform(target,0,0,100);
+							_this._transform(target.getElementsByTagName('div')[0],0,0,100);
 							_this.target = null;
 						};
 					};

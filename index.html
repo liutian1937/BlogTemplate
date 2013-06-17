@@ -59,7 +59,9 @@ a{text-decoration:none;outline:none;color:#333;}
 	
 	/*cateName style*/
 	.item{list-style:none;margin:0px;padding:0;width:100%;position:relative;padding-top:50px;padding-bottom:10px;}
-	.item li{margin:5px 3px 0px;padding:5px 0px;padding-left:20px;text-align:left;font-size:1.4rem;color:#999;line-height:22px;border:1px dashed transparent;cursor:pointer;}
+	.item li{margin:5px 3px 0px;padding:5px 0px;padding-left:20px;text-align:left;font-size:1.4rem;color:#999;line-height:22px;border:1px dashed transparent;cursor:pointer;position:relative;}
+	.item li div{z-index:1;}
+	#itemWrap li:before{font-family:'IcoMoon';content:attr(data-icon);font-size:1.6rem;color:#666;position:absolute;width:20px;height:30px;text-align:center;line-height:30px;background:#fff;border:1px solid #999;border-top-left-radius:3px;border-bottom-left-radius:3px;top:50%;margin-top:-16px;left:30px;z-index:0;}
 
 	.item .cateName{z-index:999;height:50px;padding:0px;border:none;text-align:center;width:100%;margin:0px;position:absolute;top:0px;left:0px;}
 	.item .cateName a{color:#333;display:inline-block;background:transparent url(../images/bg_title.png) no-repeat left top;padding-left:10px;width:96%;margin:6px 0px;overflow:hidden;}
@@ -211,110 +213,132 @@ a{text-decoration:none;outline:none;color:#333;}
 						<li class="cateName">
 							<a href="#" class="yahei"><span>html+css,html5,css3教程</span></a>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="http://baidu.com" class="title">纯css实现的六边形（蜂窝）导航效果</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="http://baidu.com" class="title">纯css实现的六边形（蜂窝）导航效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							</div>
 						</li>
-						<li class="cur">
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">CSS3齿轮滚动效果</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">三角形变形记之纯css实现的分布导航条效果</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">分享几个CSS3实现的Loading载入动画效果</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li  data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">Html5（css3）的瀑布流布局的实现</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">jquery实现无限滚动瀑布流实现原理</a>
-							<p>jquery实现无限滚动瀑布流实现原理jquery实现无限滚动瀑布流实现原理</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
 					</ul>
 					<ul class="item">
 						<li class="cateName">
 							<a href="#" class="yahei"><span>js,javascript,jquery教程</span></a>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">Js事件监听封装（支持匿名函数）</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">Follow,原生javascript跟随滚动条插件</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">JS判断鼠标从什么方向进入一个容器</a>
-							<p>JS判断鼠标从什么方向进入一个容器JS判断鼠标从什么方向进入一个容器JS判断鼠标从什</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
+						</li>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
 					</ul>
 					<ul class="item">
 						<li class="cateName">
 							<a href="#" class="yahei"><span>牛魔王的世界观</span></a>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">调用顾客最新浏览过的文章</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">调用顾客最新浏览过的文章</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">滚动条控制导航切换效果插件-AnchorTab（基于原生JS）</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">Js事件监听封装（支持匿名函数）</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">Follow,原生javascript跟随滚动条插件</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">JS判断鼠标从什么方向进入一个容器</a>
-							<p>JS判断鼠标从什么方向进入一个容器JS判断鼠标从什么方向进入一个容器JS判断鼠标从什</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
 					</ul>
 					<ul class="item">
 						<li class="cateName">
 							<a href="#" class="yahei"><span>js,javascript,jquery教程</span></a>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">Js事件监听封装（支持匿名函数）</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">Follow,原生javascript跟随滚动条插件</a>
-							<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
-						<li>
-							<time pubdate="pubdate">2013年4月8号星期三</time>
-							<a href="#" class="title">JS判断鼠标从什么方向进入一个容器</a>
-							<p>JS判断鼠标从什么方向进入一个容器JS判断鼠标从什么方向进入一个容器JS判断鼠标从什</p>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
+						</li>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
+						</li>
+						<li data-icon="&#xe02b;">
+							<div>
+								<time pubdate="pubdate">2013年4月8号星期三</time>
+								<a href="#" class="title">CSS3齿轮滚动效果</a>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+							<div>
 						</li>
 					</ul>
 					
@@ -507,8 +531,7 @@ function ajaxData(href){
 				data : '',
 				success : function(xhr){
 					Common.getId('postWrap').getElementsByTagName('article')[0].innerHTML = xhr.responseText;
-					asyncImg(Common.getId('postWrap'));
-					//JRight.init(true); //重载样式，需要检测图片是否载入
+					ImagesList(Common.getId('postWrap'));
 				},
 				failure : function(xhr){
 					//to do with xhr
@@ -516,22 +539,71 @@ function ajaxData(href){
 			}
 		);
 };
-function asyncImg(obj) {
-	var i = 0, ImgList = obj.getElementsByTagName('img'), Img = [], len = ImgList.length, LoadedNum = 0;
+function ImagesList(obj) {
+	var i = 0, ImgList = obj.getElementsByTagName('img'), Img = [], imgsrc, len = ImgList.length, LoadNum = 0;
 	for(i; i < len; i += 1){
+		imgsrc = ImgList[i].getAttribute('src');
+		ImgList[i].setAttribute('src','images/blank.gif');
 		(function(j){
-			Img[j] = new Image();
-			Img[j].src = ImgList[j].getAttribute('src');
-			Img[j].onreadystatechange = function () {
-				if(Img[j].readyState=="complete"){
-					LoadedNum ++ ;
-					console.log(LoadedNum);
+			Img[j] = AsyncImg().getUrl(imgsrc).callback(function(url){
+				ImgList[j].setAttribute('src',url);
+				LoadNum ++;
+				if(LoadNum === len){
+					JRight.init(true);//图片完全载入后重载样式
 				};
-			};
+			}).error(function(){
+				len -= 1;
+			});
 		})(i);
 	};
 }
 
+function AsyncImg(){
+	var _this = this, img ;
+	if(!(this instanceof AsyncImg)){
+		return new AsyncImg();
+	}
+	img = new Image();
+    _this.img = img;
+    if (!-[1,]){
+        img.onreadystatechange = function () {
+            if (img.readyState == "complete"){
+				if(_this.callback){
+					_this.callback(_this.img.src);
+				}
+            }else{
+				if(_this.error){
+					_this.error();
+				};
+			}
+        };
+    } else {
+        img.onload = function () {
+            if (img.complete == true){
+				if(_this.callback){
+					_this.callback(_this.img.src);
+				}
+            };
+        };
+		img.onerror = function(){
+			if(_this.error){
+				_this.error();
+			};
+		};
+    };
+};
+AsyncImg.prototype.getUrl = function (url){
+	this.img.src = url;
+	return this;
+};
+AsyncImg.prototype.callback = function (fn){
+	this.callback = fn;
+	return this;
+};
+AsyncImg.prototype.error = function (fn){
+	this.error = fn;
+	return this;
+};
 </script>
 </body>
 </html>
