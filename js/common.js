@@ -92,6 +92,8 @@ Ajax = function(){
 })();
 
 var Common = {
+	size : 14,
+	lineHeight : 30,
 	getId : function (id) {
 		return document.getElementById(id) || id;
 	},
@@ -201,6 +203,7 @@ var Common = {
 		};
 	},
 	next : function () {
+		//左侧，显示下一条
 		var obj = Common.siblings('next','cur');
 		var distance = Common.pageY(obj)+JLeft.disTop;
 		if(distance < 120 ){
@@ -214,6 +217,7 @@ var Common = {
 		}
 	},
 	prev : function () {
+		//左侧，显示上一条
 		var obj = Common.siblings('prev','cur');
 		var distance = Common.pageY(obj)+JLeft.disTop;
 		if(distance < 120 ){
@@ -225,5 +229,29 @@ var Common = {
 		}else{
 			JLeft.run(120,120);
 		}
+	},
+	fontSize : function(type) {
+		var wrap = Common.getId('postWrap').getElementsByTagName('section')[0];
+		switch (type){
+			case 'plus' : 
+				Common.size = (Common.size >= 20)? 20 : Common.size + 2;
+				Common.lineHeight = (Common.lineHeight >= 42)? 42 : Common.lineHeight + 4;
+				break;
+			case 'minus' : 
+				Common.size = (Common.size <= 14)? 14 : Common.size - 2;
+				Common.lineHeight = (Common.lineHeight <= 30)? 30 : Common.lineHeight - 4;
+				break;
+			case 'back' : 
+				Common.size = 14;
+				Common.lineHeight = 30;
+				break;
+			case 'keep' :
+				break;
+		}
+		Common.css(wrap,{
+			'font-size' : Common.size/10 +'rem',
+			'line-height': Common.lineHeight+'px'
+		});
+		JRight.init();//初始化JRight
 	}
 };
