@@ -6,160 +6,34 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=1" />
 
-
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/icon.css" />
 <script type="text/javascript" src="js/Common.js"></script>
 <script type="text/javascript" src="js/JTouch.js"></script>
 <script type="text/javascript" src="js/JScroll.js"></script>
 <script type="text/javascript" src="js/JNav.js"></script>
-
-<style>
-html,body{width:100%;height:100%;margin:0;padding:0;color:#333;}
-html{font-size:62.5%;}
-body{background:#303136;overflow:hidden;font-size:12px;font-size:1.2rem;}
-div,p,h1,h2,h3{padding:0;margin:0;font-weight:normal;}
-.clear:after{content:"";display:block;height:0;clear:both;visibility: hidden;overflow:hidden;}
-.clear{*zoom:1;}
-.yahei{font-family:"Microsoft YaHei","微软雅黑" !important;}
-a{text-decoration:none;outline:none;color:#333;}
-
-/*icons absolute position*/
-.abs{position:absolute;left:10px;text-align:center;}
-.top20{top:20px;}
-.top90{top:90px;}
-.bottom90{bottom:90px;}
-.bottom0{bottom:0px;}
-
-/*icons style*/
-.icons{margin-bottom:30px;}
-.icons a{display:none;}
-.icon{font-size:1.6rem;color:#999;cursor:pointer;-webkit-transition:all 0.2s linear;display:inline-block;text-align:center;}
-.cur .icon{color:#fff;}
-/*icons shadow*/
-.shadow{text-shadow:0px 1px 1px rgba(0,0,0,1);-webkit-transition:all 0.2s linear;}
-.shadow.hover{text-shadow:2px 0px 20px #fff,0px 2px 2px #000;}
-.shadow.hover .icon{color:#fff;}
-
-/*center icons*/
-.centerIcon{height:100px;top:50%;margin-top:-50px;left:5px;}
-.centerIcon .icons{margin-bottom:20px;}
-.centerIcon .icon{font-size:2.4rem;color:#ccc;}
-
-#wrap{width:100%;height:100%;overflow:hidden;}
-
-#nav{float:left;width:40px;height:100%;border-right:1px solid #303136;box-shadow:0px 0px 2px #303136,-5px 0px 5px #333 inset;background:url(../images/bg.jpg) repeat;position:relative;}
-
-#content{margin-left:42px;height:100%;background:#efedec;background:url(../images/bg_content.jpg) repeat;}
-
-
-/*content left start*/
-#contentLeft{width:320px;height:100%;float:left;border-right:1px solid #dcdad9;box-shadow:1px 0px 1px #fff;overflow:hidden;position:relative;}
-
-#itemWrap{height:100%;padding:0px 15px;overflow:hidden;}
-	
-	/*cateName style*/
-	.item{list-style:none;margin:0px;padding:0;width:100%;position:relative;padding-top:50px;padding-bottom:10px;}
-	.item li{margin:5px 3px 0px;padding:5px 0px;padding-left:20px;text-align:left;font-size:1.4rem;color:#999;line-height:22px;border:1px dashed transparent;cursor:pointer;position:relative;}
-	.item li div{z-index:1;}
-	#itemWrap li:before{font-family:'IcoMoon';content:attr(data-icon);font-size:1.6rem;color:#666;position:absolute;width:20px;height:30px;text-align:center;line-height:30px;background:#fff;border:1px solid #999;border-top-left-radius:3px;border-bottom-left-radius:3px;top:50%;margin-top:-16px;left:30px;z-index:0;}
-
-	.item .cateName{z-index:999;height:50px;padding:0px;border:none;text-align:center;width:100%;margin:0px;position:absolute;top:0px;left:0px;}
-	.item .cateName a{color:#333;display:inline-block;background:transparent url(../images/bg_title.png) no-repeat left top;padding-left:10px;width:96%;margin:6px 0px;overflow:hidden;}
-	.item .cateName a span{display:block;line-height:38px;background:transparent url(../images/bg_title.png) no-repeat right top;padding:0 23px 0px 10px;}
-	.item .title{color:#4d4d4d;}
-
-#itemWrap p{margin:5px 5px 5px 0px;display:block;word-wrap:break-word;word-break:break-all;}
-#itemWrap .title{word-wrap:break-word;word-break:break-all;line-height:25px;display:inline-block;margin-right:5px;}
-#itemWrap .title:hover{color:#db4f33;}
-#itemWrap time{font-size:1.2rem;margin:5px 0px;display:block;}
-#itemWrap li.cur{border:1px dashed #c7c7c7;background:rgba(227,225,220,0.5);border-radius:3px;box-shadow:0px 0px 2px rgba(202,202,202,0.5);}
-
-.ellipsis {overflow: hidden;height:50px;}
-.ellipsis:before {content:"";float: left;width: 5px; height: 50px;}
-.ellipsis > *:first-child {float: right;width: 100%;margin-left:-5px;}		
-.ellipsis:after {content: "...";box-sizing: content-box;-webkit-box-sizing: content-box;-moz-box-sizing: content-box;float: right; position: relative;top: -25px; left: 100%;width:2em; margin-left: -2em;padding-right: 5px;text-align: right;}
-
-/*content right start*/
-#contentRight{height:100%;margin-left:320px;position:relative;overflow:hidden;}
-
-#contentTop{height:34px;padding:10px 0px;margin:0px 60px;border-bottom:1px solid #e1e1e1;line-height:34px;}
-#contentTop .rightIcon{float:right;}
-#contentTop .icon{float:left;font-size:2.0rem;margin-right:10px;}
-#contentTop .icon:hover{color:#666;}
-#contentTop .rightIcon .icon{margin-right:20px;}
-
-.dropShadow{position:relative;margin:0px;height:5px;overflow:hidden;z-index:10;}
-.dropShadow:after {position: absolute;width: 90%;height:100px;border-radius:25%;left:5%;bottom: 16px;content: "";box-shadow: 0 6px 17px rgba(0,0,0,0.7);}
-
-
-#contentWrap{padding:0px 110px;margin-top:-5px;overflow:hidden;position:relative;}
-
-/*blog content style*/
-#postWrap {position:relative;}
-#postWrap .siblink{position:absolute;display:block;height:50px;color:#333;width:80%;left:0px;padding:25px 0px;}
-#postWrap .siblink .icon{font-size:3.2rem;float:left;line-height:46px;margin-right:20px;}
-#postWrap .siblink h3{line-height:26px;font-size:1.4rem;display:block;}
-#postWrap .siblink .category{font-size:1.2rem;color:#aaa;}
-#prevArticle{top:-100px;}
-#nextArticle{bottom:-100px;}
-.rotate .icon{transition:all 0.3s linear;transform:rotate(180deg);-o-transform:rotate(180deg);-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);}
-
-#postWrap .header{padding:10px 0px;border-bottom:1px solid #ddd;}
-#postWrap .header h1{font-size:2.8rem;line-height:40px;text-shadow:0px 0px 1px rgba(0,0,0,0.5);}
-#postWrap .header time{font-size:1.2rem;line-height:24px;}
-#postWrap .content{padding:20px 0px;font-size:1.4rem;line-height:30px;color:#666;}
-#postWrap .content p{margin:5px 0px;}
-#postWrap .content a{color:#db4f33;}
-#postWrap .content a:hover{border-bottom:1px solid #db4f33;}
-#postWrap .content h2,#postWrap .content h3{font-size:1.8rem;color:#333;font-weight:bold;}
-#postWrap img{padding:5px;border:1px solid #ccc;margin:0 auto;background:#fff;display:block;max-width:94%;}
-
-
-
-@media screen and (min-width:1280px){
-}
- 
-@media screen and (min-width: 800px) and (max-width: 1280px) {
-	#contentLeft{width:280px;}
-	#contentRight{margin-left:280px;}
-	.dropShadow:after{bottom:20px;box-shadow: 0 6px 17px rgba(0,0,0,1);}
-	#contentWrap{padding:0px 60px;margin-top:-5px;}
-}
- 
-@media screen and (max-width: 800px) {
-	#contentLeft{width:240px;}
-	#contentRight{margin-left:240px;}
-	.dropShadow:after{bottom:20px;box-shadow: 0 6px 17px rgba(0,0,0,1);}
-	#contentTop{margin:0px 40px;}
-	#contentWrap{padding:0px 30px;margin-top:-5px;}
-}
-
-/*滚动条样式*/
-.bar{position:absolute;right:5px;top:0px;display:block;width:5px;height:10px;background:#666;border-radius:5px;opacity:0;-webkit-transition:all 0.5s linear;}
-
-</style>
 </head>
 <body>
 	
 		<nav id="nav">
 		
-			<div class="abs top20 icons shadow">
+			<div class="abs top20 icons iconShadow">
 				<span class="icon" data-icon="&#x0055;"></span>
 				<a href="#">返回上一级</a>
 			</div>
 			
 			<div class="abs top90">
-				<div class="icons shadow cur">
+				<div class="icons iconShadow cur">
 					<span class="icon" data-icon="&#xe11c;"></span>
 					<a href="#">按分类分组</a>
 				</div>
 				
-				<div class="icons shadow">
+				<div class="icons iconShadow">
 					<span class="icon" data-icon="&#xe13a;"></span>
 					<a href="#">按时间分组</a>
 				</div>
 				
-				<div class="icons shadow">
+				<div class="icons iconShadow">
 					<span class="icon" data-icon="&#x003b;"></span>
 					<a href="#">按标签分组</a>
 				</div>
@@ -168,12 +42,12 @@ a{text-decoration:none;outline:none;color:#333;}
 			</div>
 			
 			<div class="abs centerIcon">
-				<div class="icons shadow" data="prev">
+				<div class="icons iconShadow" data="prev">
 					<span class="icon" data-icon="&#xe042;"></span>
 					<a href="#">上一页</a>
 				</div>
 				
-				<div class="icons shadow" data="next">
+				<div class="icons iconShadow" data="next">
 					<span class="icon" data-icon="&#xe044;"></span>
 					<a href="#">下一页</a>
 				</div>
@@ -182,12 +56,12 @@ a{text-decoration:none;outline:none;color:#333;}
 			<div class="abs bottom90">
 				
 				
-				<div class="icons shadow">
+				<div class="icons iconShadow">
 					<span class="icon" data-icon="&#xe02b;"></span>
 					<a href="#">按好评排序</a>
 				</div>
 				
-				<div class="icons shadow">
+				<div class="icons iconShadow">
 					<span class="icon" data-icon="&#x005a;"></span>
 					<a href="#">按评论排序</a>
 				</div>
@@ -195,7 +69,7 @@ a{text-decoration:none;outline:none;color:#333;}
 			
 			<div class="abs bottom0">
 				
-				<div class="icons shadow">
+				<div class="icons iconShadow">
 					<span class="icon" data-icon="&#xe135;"></span>
 					<a href="#">RSS订阅</a>
 				</div>
@@ -213,132 +87,132 @@ a{text-decoration:none;outline:none;color:#333;}
 						<li class="cateName">
 							<a href="#" class="yahei"><span>html+css,html5,css3教程</span></a>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="http://baidu.com" class="title">纯css实现的六边形（蜂窝）导航效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
 							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
 						<li  data-icon="&#xe02b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
 					</ul>
 					<ul class="item">
 						<li class="cateName">
 							<a href="#" class="yahei"><span>js,javascript,jquery教程</span></a>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
 					</ul>
 					<ul class="item">
 						<li class="cateName">
 							<a href="#" class="yahei"><span>牛魔王的世界观</span></a>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
 					</ul>
 					<ul class="item">
 						<li class="cateName">
 							<a href="#" class="yahei"><span>js,javascript,jquery教程</span></a>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
-						<li data-icon="&#xe02b;">
+						<li star-icon="&#xe02b;"  circle-icon="&#xe10b;">
 							<div>
 								<time pubdate="pubdate">2013年4月8号星期三</time>
 								<a href="#" class="title">CSS3齿轮滚动效果</a>
-								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flip操作</p>
-							<div>
+								<p>加入鼠标手势操作，鼠标可以实现tap.doubletap,swipe,hold,flick操作</p>
+							</div>
 						</li>
 					</ul>
 					
@@ -374,7 +248,7 @@ a{text-decoration:none;outline:none;color:#333;}
 					
 				</div>
 				
-				<div class="dropShadow"></div>
+				<div id="dropShadow" class="dropShadow" style="opacity:0;"></div>
 				
 				<!--content top end-->
 				<!--content wrap start-->
@@ -450,7 +324,7 @@ a{text-decoration:none;outline:none;color:#333;}
 	
 <script>
 
-//左侧导航部分
+//左侧ICON图标部分
 JTouch(Common.getId('nav')).on('start',function(evt){
 	var target = evt.target.parentNode;
 	if(Common.hasClass(target,'icons')){
@@ -475,8 +349,42 @@ var JN = JNav(Common.getId('itemWrap')); //实例化JNav
 //中间标题列表
 var JLeft = JScroll({
 	'wrap' : Common.getId('itemWrap'),
-	'horizontal' : true,
 	'stopEvent' : true,
+	'horizontal' : function(evt,data) {
+		var target = evt.target || evt.srcElement;
+		target = Common.getParent(target,'li');
+		
+		if(target && target.className != 'cateName'){
+			JLeft.target = target;
+			if(Common.hasClass(target,'cur')){
+				JLeft.targetCur = true;
+				Common.removeClass(target,'cur');
+			};
+			console.log(data['x']);
+			if(data['x'] >= 50){
+				var x = data['x'] - 50;
+				Common.transform(target,x,0,0);
+				Common.transform(target.getElementsByTagName('div')[0],50,0,0);
+			}else if(data['x'] <= -70){
+				var x = data['x'] + 70;
+				Common.transform(target,x,0,0);
+				Common.transform(target.getElementsByTagName('div')[0],-70,0,0);
+			}else{
+				Common.transform(target.getElementsByTagName('div')[0],data['x'],0,0);
+			};
+			
+			if(data['status'] == 'end'){
+				Common.transform(target,0,0,100);
+				Common.transform(target.getElementsByTagName('div')[0],0,0,100);
+				JLeft.target = null;
+				if(JLeft.targetCur){
+					Common.addClass(target,'cur');
+					JLeft.targetCur = false;
+				};
+			};
+		};
+					
+	},
 	'initFn' : function (obj) {
 		JN.init();
 		JN.scroll(-obj.disTop);
@@ -490,6 +398,16 @@ var JLeft = JScroll({
 	},
 	'endFn' : function (obj) {
 		JN.scroll(-obj.resultTop);
+		if(obj.target){
+			//水平拖拽的释放
+			Common.transform(obj.target,0,0,100);
+			Common.transform(obj.target.getElementsByTagName('div')[0],0,0,100);
+			JLeft.target = null;
+			if(obj.targetCur){
+				Common.addClass(target,'cur');
+				obj.targetCur = false;
+			};
+		};
 	}
 });
 
@@ -501,19 +419,25 @@ var JRight = JScroll({
 	'childHeight' : 'article',
 	'horizontal' : false,
 	'showBar' : true,
+	'moveFn' : function (obj) {
+		//拖拽过程中的回调事件
+		Common.css(Common.getId('dropShadow'),{
+			'opacity' : 1
+		});
+	},
 	'prevFn' : function (status){
+		//拖拽到顶部的异步加载事件
 		if(status === 'start'){
 			Common.addClass(Common.getId('prevArticle'),'rotate');
 		}else if(status === 'back'){
 			Common.removeClass(Common.getId('prevArticle'),'rotate');
 		}else if(status === 'end'){
 			var href = Common.getId('prevArticle').getAttribute('href');
-			
 			ajaxData(href);
-			
 		}
 	},
 	'nextFn' : function (status){
+		//拖拽到底部的异步加载事件
 		if(status === 'start'){
 			Common.addClass(Common.getId('nextArticle'),'rotate');
 		}else if(status === 'back'){
@@ -522,6 +446,13 @@ var JRight = JScroll({
 			var href = Common.getId('nextArticle').getAttribute('href');
 			ajaxData(href);
 		}
+	},
+	'endFn' : function (obj) {
+		//拖拽一次结束后回调事件
+		var num = (obj.resultTop === 0)?0:1;
+		Common.css(Common.getId('dropShadow'),{
+			'opacity' : num
+		});
 	}
 });
 
@@ -556,53 +487,6 @@ function ImagesList(obj) {
 			});
 		})(i);
 	};
-}
-
-function AsyncImg(){
-	var _this = this, img ;
-	if(!(this instanceof AsyncImg)){
-		return new AsyncImg();
-	}
-	img = new Image();
-    _this.img = img;
-    if (!-[1,]){
-        img.onreadystatechange = function () {
-            if (img.readyState == "complete"){
-				if(_this.callback){
-					_this.callback(_this.img.src);
-				}
-            }else{
-				if(_this.error){
-					_this.error();
-				};
-			}
-        };
-    } else {
-        img.onload = function () {
-            if (img.complete == true){
-				if(_this.callback){
-					_this.callback(_this.img.src);
-				}
-            };
-        };
-		img.onerror = function(){
-			if(_this.error){
-				_this.error();
-			};
-		};
-    };
-};
-AsyncImg.prototype.getUrl = function (url){
-	this.img.src = url;
-	return this;
-};
-AsyncImg.prototype.callback = function (fn){
-	this.callback = fn;
-	return this;
-};
-AsyncImg.prototype.error = function (fn){
-	this.error = fn;
-	return this;
 };
 </script>
 </body>

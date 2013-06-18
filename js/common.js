@@ -39,6 +39,58 @@ Ajax = function(){
     }
     return {request:request};   
 }();
+
+(function(){
+	//异步加载图片
+	var AsyncImg = function(){
+		var _this = this, img ;
+		if(!(this instanceof AsyncImg)){
+			return new AsyncImg();
+		}
+		img = new Image();
+		_this.img = img;
+		if (!-[1,]){
+			img.onreadystatechange = function () {
+				if (img.readyState == "complete"){
+					if(_this.callback){
+						_this.callback(_this.img.src);
+					}
+				}else{
+					if(_this.error){
+						_this.error();
+					};
+				}
+			};
+		} else {
+			img.onload = function () {
+				if (img.complete == true){
+					if(_this.callback){
+						_this.callback(_this.img.src);
+					}
+				};
+			};
+			img.onerror = function(){
+				if(_this.error){
+					_this.error();
+				};
+			};
+		};
+	};
+	AsyncImg.prototype.getUrl = function (url){
+		this.img.src = url;
+		return this;
+	};
+	AsyncImg.prototype.callback = function (fn){
+		this.callback = fn;
+		return this;
+	};
+	AsyncImg.prototype.error = function (fn){
+		this.error = fn;
+		return this;
+	};
+	window.AsyncImg = AsyncImg;
+})();
+
 var Common = {
 	getId : function (id) {
 		return document.getElementById(id) || id;
@@ -131,6 +183,22 @@ var Common = {
 	pageY:function(elem){
 		//获取距离顶部的距离
 		return elem.offsetParent?(elem.offsetTop+Common.pageY(elem.offsetParent)):elem.offsetTop;
+	},
+	transform : function (obj,x,y,time) {
+		var _this = this;
+		if(Common.isWebkit()){
+			Common.css(obj,{
+				'WebkitTransform' : 'translate3d('+x+'px,'+y+'px,0)',
+				'WebkitTransitionDuration' : time+'ms',
+				'WebkitTransitionTimingFunction':'linear'
+			});
+		}else{
+			Common.css(obj,{
+				'transform' : 'translate('+x+'px,'+y+'px)',
+				'transitionDuration' : time+'ms',
+				'transitionTimingFunction':'linear'
+			});
+		};
 	},
 	next : function () {
 		var obj = Common.siblings('next','cur');

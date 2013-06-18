@@ -103,12 +103,14 @@
 				_this._css(obj,{
 						'opacity' : state,
 						'top' : '0px',
-						'bottom' : 'auto'
+						'bottom' : 'auto',
+						'z-index' : 1
 				}):
 				_this._css(obj,{
 						'opacity' : state,
 						'top' : 'auto',
-						'bottom' : '0px'
+						'bottom' : '0px',
+						'z-index' : 0
 				});
 		},
 		_hideFixed : function(index,showOne){

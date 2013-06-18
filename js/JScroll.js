@@ -155,19 +155,7 @@
 					};
 				}else if(_this.params.horizontal){
 					//是否支持水平拖拽
-					var target = evt.target || evt.srcElement;
-					target = SCommon.getParent(target,'li');
-					
-					if(target && target.className != 'cateName'){
-						_this.target = target;
-						_this._transform(target.getElementsByTagName('div')[0],data['x'],0,0);
-						
-						if(data['status'] == 'end'){
-							_this._transform(target.getElementsByTagName('div')[0],0,0,100);
-							_this.target = null;
-						};
-					};
-					
+					_this.params.horizontal(evt,data);
 				}
 			}).on('mousewheel',function(evt,data){
 				var dis;
@@ -203,14 +191,7 @@
 					_this.run(dis,time);
 				};
 			}).on('end',function(){
-				_this.end();
-				
-				if(_this.target){
-					//水平拖拽的释放
-					_this._transform(_this.target,0,0,100);
-					_this.target = null;
-				}
-				
+				_this.end();				
 			});
 		},
 		move : function (dis) {
