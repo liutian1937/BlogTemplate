@@ -43,15 +43,16 @@ a{text-decoration:none;outline:none;color:#333;}
 	
 	/*cateName style*/
 	.item{list-style:none;margin:0px;padding:0;width:100%;position:relative;padding-top:50px;padding-bottom:10px;overflow:hidden;}
-	.item li{margin:5px 3px 0px;padding-left:20px;text-align:left;font-size:1.4rem;color:#999;line-height:22px;border:1px dashed transparent;cursor:pointer;position:relative;overflow:hidden;}
+	.item li{margin:5px 3px 0px;text-align:left;font-size:1.4rem;color:#999;line-height:22px;border:1px dashed transparent;cursor:pointer;position:relative;overflow:hidden;}
 	
 	/*左右拖拽显示星星和已读*/
 	#itemWrap li:before{font-family:'IcoMoon';content:attr(star-icon);font-size:1.6rem;color:#666;position:absolute;width:20px;height:30px;text-align:center;line-height:30px;background:#fff;border:1px solid #999;border-top-left-radius:3px;border-bottom-left-radius:3px;top:50%;margin-top:-16px;left:25px;z-index:0;}
 	#itemWrap li:after{font-family:'IcoMoon';content:attr(circle-icon);font-size:1.6rem;color:#666;position:absolute;width:20px;height:30px;text-align:center;line-height:30px;background:#fff;border:1px solid #999;border-top-right-radius:3px;border-bottom-right-radius:3px;top:50%;margin-top:-16px;right:25px;z-index:0;}
 	
-	.item li div{z-index:1;position:relative;background:#f5f5f5 url(../images/bg_content.jpg) repeat;height:100%;padding-left:25px;margin-left:-25px;padding-right:25px;margin-right:-25px;}
+	.item li div{z-index:1;position:relative;background:#f5f5f5 url(../images/bg_content.jpg) repeat;height:100%;padding-left:60px;margin-left:-25px;padding-right:25px;margin-right:-25px;}
 	.item li div:before{content:'';width:1px;height:50px;position:absolute;top:50%;margin-top:-25px;left:0px;background:#aaa;box-shadow:0px 10px 1px #aaa,0px -10px 1px #aaa;}
 	.item li div:after{content:'';width:1px;height:50px;position:absolute;top:50%;margin-top:-25px;right:0px;background:#aaa;box-shadow:0px 10px 1px #aaa,0px -10px 1px #aaa;}
+	.item li .icon{position:absolute;left:35px;top:30px;font-size:1.8rem;color:#666;line-height:30px;}
 	
 	.item .cateName:before{content:'';display:none;}
 	.item .cateName:after{content:'';display:none;}
